@@ -11,6 +11,9 @@ i,j,k = 0,0,0
 
 def pattern_create():
 	counter = int(input("Enter the pattern length: "))
+	if counter > 20280:
+		print("Pattern length exceeds the limit, Try Again...")
+		exit()
 	global val,i,j,k
 
 	while counter > len(val):
