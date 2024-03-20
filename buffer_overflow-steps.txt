@@ -1,10 +1,8 @@
-
 echo 0 > /proc/sys/kernel/randomize_va_space # execute as root
 
 gcc bow.c -o bow32 -fno-stack-protector -z execstack -m32 # compile in 32 bit
-gcc bow.c -o bow64 -fno-stack-protector -z execstack -m64 # Compile in 64 bit
 
-gdb -q file_name # Open file using gdb to try Buffer Overflow
+gdb -q bow32 # Open file using gdb to try Buffer Overflow
 run $(python -c "print '\x55' * 1100") # Overwrite EIP to create Segmentation fault
 run $(python -c "print 'pattern_value') # eg:Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8 file: buffer_fuzz.py
 Find buffer value with the offset eip result in Segmentation fault eg: 0x6a42346a -> 1063
