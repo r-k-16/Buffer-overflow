@@ -20,7 +20,7 @@ void start_server(){
     bzero(&sock, sizeof(sock));
  
     sock.sin_family = AF_INET;
-    sock.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+    sock.sin_addr.s_addr = htonl(INADDR_ANY);
     sock.sin_port = htons(8888); //Binding port
  
     bind(sfd, (struct sockaddr *) &sock, sizeof(sock));
